@@ -9,13 +9,13 @@ Este repositório é destinado ao desenvolvimento da segunda entrega do projeto 
 A segunda entrega aborda todo o escopo requisitado, considerando a realização de Diagramas de Modelagem: Estático, Dinâmico e Organizacional.  
 Todas divididas em diferentes tópicos de entrega pelo GitPages:
 
-#### 1. Desenho de Software (Modelagem)
+#### 2. Desenho de Software (Modelagem)
 
-1.1 Modelagem Estática
+2.1 Modelagem Estática
 
-1.2 Modelagem Dinâmica
+2.2 Modelagem Dinâmica
 
-1.3 Modelagem Organizacional/Casos de Uso
+2.3 Modelagem Organizacional/Casos de Uso
 
 ## Equipe
 
