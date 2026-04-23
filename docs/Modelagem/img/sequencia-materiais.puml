@@ -1,0 +1,220 @@
+' Feito por Marcus Vinicius Cunha Dantas e Júlio César Costa
+@startuml
+autonumber "<b>[0]"
+actor       Usuário as U
+boundary    View as V
+control     Controller as C
+entity      Service as M
+database    Database as DB
+
+
+alt Buscar Material
+  autonumber "<b>[0]"
+
+  U -> V: clica em material para visualizar
+  activate V
+
+  V -> C: buscarMaterial(id)
+  activate C
+
+  C -> M: obterMaterial(id)
+  activate M
+
+  M->DB: findById(id)
+  activate DB
+
+  alt Sucesso
+    DB-->M: material
+    deactivate DB
+
+    M-->C: material
+    deactivate M
+
+    C--> V:  renderiza materialView
+    deactivate C
+
+    V-->U: apresenta view atualizada
+    deactivate V
+  else Erro
+    DB-->M: null
+    deactivate DB
+
+    M-->C: throw Exception
+    deactivate M
+
+    C--> V: renderiza modal de erro
+    deactivate C
+
+    V-->U: apresenta modal de erro
+    deactivate V
+  end
+
+else Criar Material
+
+  autonumber "<b>[0]"
+  U -> V : preeche dados e clica "criar"
+  activate V
+
+  V -> C : criarMaterial(dados)
+  activate C
+
+  C -> M : intanciarMaterial(dados)
+  activate M
+
+  M -> DB : insert(novoMaterial)
+  activate DB
+
+  alt Sucesso
+    DB --> M : idMaterialGerado
+    deactivate DB
+
+    M --> C : idMaterialGerado
+    deactivate M
+
+    C --> V : renderiza modal sucesso
+    deactivate C
+
+    V --> U : apresenta modal de sucesso
+    deactivate V
+  else Erro
+    DB-->M: null
+    deactivate DB
+
+    M-->C: throw Exception
+    deactivate M
+
+    C--> V: renderiza modal de erro
+    deactivate C
+
+    V-->U: apresenta modal de erro
+    deactivate V
+  end
+
+else Excluir Material
+
+  autonumber "<b>[0]"
+
+  U -> V: clica botão de excluir material
+  activate V
+
+  V -> C: excluirMaterial(id)
+  activate C
+
+  C -> M: excluirMaterial(id)
+  activate M
+
+  M->DB: delete(id)
+  activate DB
+
+  alt Sucesso
+    DB-->M: idMaterialDeletado
+    deactivate DB
+
+    M-->C:  idMaterialDeletado
+    deactivate M
+
+    C--> V:  renderiza modal sucesso
+    deactivate C
+
+    V-->U: apresenta modal de sucesso
+    deactivate V
+  else Erro
+    DB-->M: null
+    deactivate DB
+
+    M-->C: throw Exception
+    deactivate M
+
+    C--> V: renderiza modal de erro
+    deactivate C
+
+    V-->U: apresenta modal de erro
+    deactivate V
+  end
+
+else Baixar Material
+
+  autonumber "<b>[0]"
+
+  U -> V: clica botão baixar material
+  activate V
+
+  V -> C: baixarMaterial(id)
+  activate C
+
+  C -> M: buscarArquivo(id)
+  activate M
+
+  M->DB: findFile(id)
+  activate DB
+
+  alt Sucesso
+    DB-->M:  materialBytes
+    deactivate DB
+
+    M-->C:  materialBytes
+    deactivate M
+
+    C--> V:  envia url download
+    deactivate C
+
+    V-->U: baixa arquivo
+    deactivate V
+  else Erro
+    DB-->M: null
+    deactivate DB
+
+    M-->C: throw Exception
+    deactivate M
+
+    C--> V: renderiza modal de erro
+    deactivate C
+
+    V-->U: apresenta modal de erro
+    deactivate V
+  end
+
+else Editar Material
+
+  autonumber "<b>[0]"
+
+  U -> V: clica botão editar material, preenche dados e envia
+  activate V
+
+  V -> C: editarMaterial(idMaterial, dados)
+  activate C
+
+  C -> M : atualizarMaterial(novoMaterial)
+  activate M
+
+  M -> DB : update(novoMaterial)
+  activate DB
+
+  alt Sucesso
+    DB --> M : idMaterialEditado
+    deactivate DB
+
+    M --> C : idMaterialEditado
+    deactivate M
+
+    C --> V : renderiza modal sucesso
+    deactivate C
+
+    V --> U : apresenta modal de sucesso
+    deactivate V
+  else Erro
+    DB-->M: null
+    deactivate DB
+
+    M-->C: throw Exception
+    deactivate M
+
+    C--> V: renderiza modal de erro
+    deactivate C
+
+    V-->U: apresenta modal de erro
+    deactivate V
+  end
+end
+
+@enduml
