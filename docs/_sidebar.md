@@ -13,3 +13,4 @@
       - [2.5.1 Diagrama de Sequências](/Modelagem/2.5.1.DiagramaSequencias.md)
       - [2.5.2 Backlog do Produto](/Modelagem/2.5.2.Backlog.md)
       - [2.5.3 Documentação das Reuniões](/Modelagem/2.5.3.DocumentacaoReunioes.md)
+      - [2.5.4 Diagrama de Implantação](/Modelagem/2.1.2.DiagramaImplantação.md)
