@@ -22,7 +22,7 @@
 
 O OrganizeSeuGrupo é um **app mobile** que centraliza a organização de grupos de estudo em um só lugar, reunindo estudantes, professores e vestibulandos em um ambiente estruturado e intuitivo. A plataforma permite visualizar encontros por meio de calendários interativos, com informações como data, horário, tema da sessão e participantes envolvidos. Usuários autenticados podem filtrar atividades por matéria, tags ou palavras-chave, facilitando encontrar exatamente o conteúdo que precisam revisar e as reuniões planejadas para o sua organização e aprendizado!
 
-## Screenshots da Primeira Entrega
+## Screenshots da Segunda Entrega
 
 
 ## Há algo a ser executado?
